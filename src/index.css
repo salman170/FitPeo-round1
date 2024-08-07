@@ -4,5 +4,8 @@
 
 html,
 body {
+  background-color: #202028;
+  color: #d1d5db;
+  font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
 }

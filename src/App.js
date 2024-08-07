@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./screens/dashboard/Home";
 
+import Dashboard from "./screens/dashboard/Dashboard";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Dashboard />} />
       </Routes>
+      <Toaster />
     </BrowserRouter>
   );
 };
