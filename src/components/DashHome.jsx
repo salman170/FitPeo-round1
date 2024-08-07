@@ -6,14 +6,18 @@ import {
   BsStar,
   BsStarFill,
 } from "react-icons/bs";
+import { PieChart } from '@mui/x-charts/PieChart';
 
 import CountUp from "react-countup";
 
-import { BarChart } from "@mui/x-charts";
+import { BarChart, pieArcLabelClasses } from "@mui/x-charts";
 import { IoMdArrowDropup } from "react-icons/io";
 import { MdNavigateNext } from "react-icons/md";
-import { FaGears } from "react-icons/fa6";
+
 import { SlTarget } from "react-icons/sl";
+import DetialsTable from "./DetailsTable";
+import { GiHamburger } from "react-icons/gi";
+import { BiDish } from "react-icons/bi";
 
 const DashHome = () => {
   return (
@@ -87,24 +91,51 @@ const DashHome = () => {
           </div>
         </div>
         <div className="flex flex-col px-4 py-3 rounded-lg bg-darkBg lg:min-h-28 md:min-w-28 lg:w-full md:flex-row ">
-          <div className="flex flex-col justify-between h-full">
+          <div className="h-full ">
             <p className="py-2 text-sm">Net Profit</p>
-            <div className="">
-              <p className="text-3xl font-semibold">
-                <CountUp
-                  start={0}
-                  end={6759.25}
-                  duration={5}
-                  prefix="$"
-                  suffix="k"
-                />
-              </p>
-              <p className="flex gap-0.5  font-bold text-green-500 items-center">
-                <IoMdArrowDropup className="text-lg" /> 5%
-              </p>
-            </div>
+
+            <p className="text-3xl font-semibold">
+              <CountUp
+                start={0}
+                end={6759.25}
+                duration={5}
+                prefix="$"
+                suffix="k"
+              />
+            </p>
+            <p className="flex gap-0.5  font-bold text-green-500 items-center mt-2">
+              <IoMdArrowDropup className="text-lg" /> 5%
+            </p>
           </div>
-          <div className=""></div>
+          <div className="min-h-20">
+            <PieChart
+              series={[
+                {
+                  data: [
+                    { id: 0, value: 5, label: "cancelled ", color: "red" },
+                    { id: 1, value: 70, label: "Delivered " },
+                    // { id: 2, value: 20, label: "series C" },
+                  ],
+                  innerRadius: 25,
+                  outerRadius: 40,
+                  paddingAngle: 5,
+                  cornerRadius: 5,
+                  startAngle: -90,
+                  endAngle: 180,
+
+                  cx: 100,
+                  cy: 50,
+
+                  [`& .${pieArcLabelClasses.root}`]: {
+                    fill: "white",
+                    fontWeight: "bold",
+                  },
+                },
+              ]}
+              width={300}
+              height={100}
+            />
+          </div>
         </div>
         <div className="relative px-4 py-2 text-white rounded-lg md:col-span-2 min-h-72 bg-darkBg ">
           <select className="absolute z-10 px-2 py-1 text-xs rounded-lg outline-none cursor-pointer right-4 top-4 bg-lightHeader md:py-2 md:px-3 md:text-sm">
@@ -131,7 +162,7 @@ const DashHome = () => {
           <div className="flex items-center justify-between p-2 rounded-lg cursor-pointer hover:bg-lightHeader">
             <div className="flex items-center gap-2 md:gap-4 ">
               <div className="p-4 rounded-full w-min bg-blue-500/20">
-                <FaGears className="text-2xl text-white" />
+                <GiHamburger className="text-2xl text-white" />
               </div>
               <p className="md:text-lg">Popular Dishes</p>
             </div>
@@ -143,7 +174,7 @@ const DashHome = () => {
           <div className="flex items-center justify-between p-2 rounded-lg cursor-pointer hover:bg-lightHeader">
             <div className="flex items-center gap-2 md:gap-4 ">
               <div className="p-4 rounded-full w-min bg-cyan-500/20">
-                <FaGears className="text-2xl text-white" />
+                <BiDish className="text-2xl text-white" />
               </div>
               <p className="md:text-lg">Menus</p>
             </div>
@@ -153,7 +184,12 @@ const DashHome = () => {
             </div>
           </div>
         </div>
-        <div className="relative px-4 py-2 text-white rounded-lg md:col-span-2 min-h-72 bg-darkBg "></div>
+        <div className="relative px-4 py-2 text-white rounded-lg md:col-span-2 min-h-72 bg-darkBg ">
+          <p className="sticky top-0 py-3 font-semibold text-white bg-darkBg ">
+            Recent Orders
+          </p>
+          <DetialsTable />
+        </div>
         <div className="relative px-4  text-white rounded-lg min-h-72 max-h-[50vh] bg-darkBg overflow-y-scroll  ">
           <p className="sticky top-0 py-3 font-semibold text-white bg-darkBg ">
             Customer's Feedback
@@ -340,17 +376,18 @@ const ReviewsSection = () => {
             <div className="">
               <p>{item.name}</p>
               <div className="flex gap-1 text-sm">
-              {[0, 1, 2, 3, 4].map((index) => (
-                <div >
-                  {index < item.rating ? (
-                    <BsStarFill className="text-yellow-400" />
-                  ) : (
-                    // ) : index === item.rating ? (
-                    //   <BsStarHalf />
-                    <BsStar />
-                  )}
-                </div>
-              ))}</div>
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <div>
+                    {index < item.rating ? (
+                      <BsStarFill className="text-yellow-400" />
+                    ) : (
+                      // ) : index === item.rating ? (
+                      //   <BsStarHalf />
+                      <BsStar />
+                    )}
+                  </div>
+                ))}
+              </div>
               <p className="pt-2 text-sm">{item.review}</p>
             </div>
           </div>
