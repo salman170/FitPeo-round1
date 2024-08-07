@@ -34,11 +34,11 @@ const Dashboard = () => {
             setSelectedItem={setSelectedItem}
           />
         </div>
-        <div className="h-screen relative w-full">
-          <div className="md:sticky top-0 left-0 w-full">
+        <div className="relative w-full h-screen">
+          <div className="top-0 left-0 w-full md:sticky">
             <DashNav />
           </div>
-          <div className="w-full">
+          <div className="w-full ">
             <DashHome />
           </div>
         </div>
