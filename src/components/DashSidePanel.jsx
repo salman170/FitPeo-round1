@@ -74,13 +74,13 @@ const DashSidePanel = ({
           <div>
             <div
               onClick={() => setOpen(!open)}
-              className="p-2  min-h-16  flex justify-center items-center mb-4 mt-2"
+              className="flex items-center justify-center p-2 mt-2 mb-4 duration-500 cursor-pointer min-h-16 hover:rotate-90 hover:scale-105"
             >
-              <div className="grid grid-cols-2 gap-0.5 cursor-pointer ">
-                <div className="h-4 w-4 bg-primaryBlue rounded-r-full rounded-tl-full lg:h-4 lg:w-4"></div>
-                <div className="h-4 w-4 bg-primaryBlue rounded-r-full rounded-bl-full lg:h-4 lg:w-4"></div>
-                <div className="h-4 w-4 bg-primaryBlue rounded-l-full rounded-tr-full lg:h-4 lg:w-4"></div>
-                <div className="h-4 w-4 bg-primaryBlue rounded-l-full rounded-br-full lg:h-4 lg:w-4"></div>
+              <div className="grid grid-cols-2 gap-0.5 cursor-pointer hover:gap-1 duration-100">
+                <div className="w-4 h-4 rounded-r-full rounded-tl-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+                <div className="w-4 h-4 rounded-r-full rounded-bl-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+                <div className="w-4 h-4 rounded-l-full rounded-tr-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+                <div className="w-4 h-4 rounded-l-full rounded-br-full bg-primaryBlue lg:h-4 lg:w-4"></div>
               </div>
 
               {/* Admin{" "}
@@ -128,7 +128,7 @@ const MenuItem = ({ icon: Icon, label, isSelected, onClick, open }) => {
 
 const LogoutButton = ({ onClick, open }) => (
   <div
-    className="  flex cursor-pointer gap-2   border-l-4 md:py-2  items-center text-sm md:text-base px-6 overflow-hidden lg:gap-6 hover:text-primaryBlue justify-center mb-6 hover:border-primaryBlue border-transparent"
+    className="flex items-center justify-center gap-2 px-6 mb-6 overflow-hidden text-sm border-l-4 border-transparent cursor-pointer md:py-2 md:text-base lg:gap-6 hover:text-primaryBlue hover:border-primaryBlue"
     onClick={onClick}
   >
     <AiOutlineLogout className="text-xl" />

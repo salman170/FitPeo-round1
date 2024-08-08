@@ -9,6 +9,10 @@ import { BiTask } from "react-icons/bi";
 import { RiBarChartBoxLine } from "react-icons/ri";
 import { TbShoppingBagCheck } from "react-icons/tb";
 import { CiWallet } from "react-icons/ci";
+import Stats from "./Stats";
+import Task from "./Task";
+import Wallet from "./Wallet";
+import Shopping from "./Shopping";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
@@ -39,7 +43,17 @@ const Dashboard = () => {
             <DashNav />
           </div>
           <div className="w-full ">
-            <DashHome />
+            {selectedItem === "Dashboard" ? (
+              <DashHome />
+            ) : selectedItem === "Stats" ? (
+              <Stats />
+            ) : selectedItem === "Task" ? (
+              <Task />
+            ) : selectedItem === "Wallet" ? (
+              <Wallet />
+            ) : selectedItem === "Shopping" ? (
+              <Shopping />
+            ) : null}
           </div>
         </div>
       </div>
