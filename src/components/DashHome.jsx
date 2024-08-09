@@ -107,7 +107,7 @@ const DashHome = () => {
               <IoMdArrowDropup className="text-lg" /> 5%
             </p>
           </div>
-          <div className="min-h-20">
+          <div className="overflow-hidden min-h-20">
             <PieChart
               series={[
                 {

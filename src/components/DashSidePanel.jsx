@@ -37,19 +37,24 @@ const DashSidePanel = ({
 
   return (
     <div className="flex h-screen ">
-      {/* <div
+      <div
         className={`absolute h-screen   duration-500 md:hidden   ${
           open ? "left-0  " : "-left-[100%]"
-        }  flex flex-col justify-between    `}
+        }  flex flex-col justify-between z-20 bg-lightHeader    `}
       >
         <div>
-          <div className="mt-2 mb-6 border-b">
-            <Link to="/">
-              {/* <img src={logo} alt='logo' className='mx-4  h-[56px] ' /> 
-              Logo
-            </Link>
+          <div
+            onClick={() => setOpen(!open)}
+            className="flex items-center justify-center w-full p-2 mt-2 mb-4 duration-500 cursor-pointer min-h-16 hover:scale-105 group min-w-60"
+          >
+            <div className="grid grid-cols-2 gap-0.5 cursor-pointer hover:gap-1 duration-500  group-hover:rotate-90">
+              <div className="w-4 h-4 rounded-r-full rounded-tl-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+              <div className="w-4 h-4 rounded-r-full rounded-bl-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+              <div className="w-4 h-4 rounded-l-full rounded-tr-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+              <div className="w-4 h-4 rounded-l-full rounded-br-full bg-primaryBlue lg:h-4 lg:w-4"></div>
+            </div>
           </div>
-          <div className="text-lg lg:text-xl">
+          <div className="flex flex-col gap-4 text-lg lg:text-xl">
             {menuItems.map((item) => (
               <MenuItem
                 key={item.label}
@@ -63,9 +68,11 @@ const DashSidePanel = ({
           </div>
         </div>
         <LogoutButton onClick={handleLogout} open={open} />
-      </div> */}
+      </div>
       <div
-        className={`  ${open ? "w-56" : "w-20"}  duration-500   `}
+        className={`  ${
+          open ? "w-56" : "w-20"
+        }  duration-500  hidden md:block  `}
         // className={` ${
         //   open ? "min-w-[250px]" : "w-20"
         // }   justify-between  duration-500   `}
@@ -74,9 +81,9 @@ const DashSidePanel = ({
           <div>
             <div
               onClick={() => setOpen(!open)}
-              className="flex items-center justify-center p-2 mt-2 mb-4 duration-500 cursor-pointer min-h-16 hover:rotate-90 hover:scale-105"
+              className="flex items-center justify-center w-full p-2 mt-2 mb-4 duration-500 cursor-pointer min-h-16 hover:scale-105 group"
             >
-              <div className="grid grid-cols-2 gap-0.5 cursor-pointer hover:gap-1 duration-100">
+              <div className="grid grid-cols-2 gap-0.5 cursor-pointer hover:gap-1 duration-500  group-hover:rotate-90">
                 <div className="w-4 h-4 rounded-r-full rounded-tl-full bg-primaryBlue lg:h-4 lg:w-4"></div>
                 <div className="w-4 h-4 rounded-r-full rounded-bl-full bg-primaryBlue lg:h-4 lg:w-4"></div>
                 <div className="w-4 h-4 rounded-l-full rounded-tr-full bg-primaryBlue lg:h-4 lg:w-4"></div>
@@ -121,7 +128,13 @@ const MenuItem = ({ icon: Icon, label, isSelected, onClick, open }) => {
       onClick={onClick}
     >
       <Icon className="text-xl lg:text-2xl" />
-      <span className={`delay-500 ${open ? "visible  " : "hidden w-0"} duration-300`}>{label}</span>
+      <span
+        className={`delay-500 ${
+          open ? "visible  " : "hidden w-0"
+        } duration-300`}
+      >
+        {label}
+      </span>
     </div>
   );
 };
@@ -132,6 +145,11 @@ const LogoutButton = ({ onClick, open }) => (
     onClick={onClick}
   >
     <AiOutlineLogout className="text-xl" />
-    <span className={`delay-500 ${open ? "visible " : "hidden w-0"} duration-300`}> Logout</span>
+    <span
+      className={`delay-500 ${open ? "visible " : "hidden w-0"} duration-300`}
+    >
+      {" "}
+      Logout
+    </span>
   </div>
 );
